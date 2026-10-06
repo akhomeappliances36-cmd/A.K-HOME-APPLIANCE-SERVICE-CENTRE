@@ -1,224 +1,768 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A.K Home Appliance Service Centre</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+<title>A.K Home Appliance Service Centre</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#050b14;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 7%;
+
+    background:rgba(3,15,30,0.65);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#ff8a00;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#ff8a00;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    padding:130px 8% 80px;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(2,12,25,.96) 0%,
+        rgba(2,24,52,.86) 45%,
+        rgba(0,75,140,.35) 100%
+    ),
+    url("https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=2000&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:780px;
+}
+
+.small-title{
+    color:#ff8a00;
+    letter-spacing:5px;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:20px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-size:clamp(45px,7vw,90px);
+    line-height:.95;
+    margin-bottom:25px;
+    font-weight:900;
+}
+
+.hero h1 span{
+    color:#ff8a00;
+}
+
+.hero p{
+    max-width:650px;
+    color:#d3dce8;
+    line-height:1.8;
+    font-size:17px;
+    margin-bottom:35px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 30px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+    display:inline-block;
+}
+
+.primary{
+    background:#ff8a00;
+    color:#07111f;
+}
+
+.primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(255,138,0,.35);
+}
+
+.secondary{
+    border:1px solid rgba(255,255,255,.35);
+    color:white;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(10px);
+}
+
+.secondary:hover{
+    background:white;
+    color:#07111f;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:100px 8%;
+}
+
+.section-label{
+    color:#ff8a00;
+    letter-spacing:4px;
+    font-size:12px;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.section-title{
+    font-size:clamp(35px,5vw,65px);
+    margin-bottom:50px;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.features{
+    background:#07111f;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    min-height:270px;
+    padding:35px;
+
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.025)
+    );
+
+    backdrop-filter:blur(15px);
+
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#ff8a00;
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.icon{
+    font-size:42px;
+    margin-bottom:22px;
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#aebdcd;
+    line-height:1.7;
+}
+
+/* =========================
+   SERVICE SHOWCASE
+========================= */
+
+.showcase{
+    background:#03070d;
+}
+
+.showcase-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.showcase-item{
+    min-height:450px;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:flex-end;
+
+    transition:.4s;
+}
+
+.showcase-item:hover{
+    transform:scale(1.02);
+}
+
+.item1{
+    background-image:
+    linear-gradient(
+        transparent,
+        rgba(0,0,0,.95)
+    ),
+    url("https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=85");
+}
+
+.item2{
+    background-image:
+    linear-gradient(
+        transparent,
+        rgba(0,0,0,.95)
+    ),
+    url("https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=85");
+}
+
+.showcase-text{
+    padding:35px;
+}
+
+.showcase-text h3{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.showcase-text p{
+    color:#ccc;
+    line-height:1.6;
+}
+
+/* =========================
+   SERVICES LIST
+========================= */
+
+.service-list{
+    background:#091727;
+}
+
+.service-boxes{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.service-box{
+    padding:30px 20px;
+    text-align:center;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    transition:.3s;
+}
+
+.service-box:hover{
+    transform:translateY(-7px);
+    border-color:#ff8a00;
+}
+
+.service-box .big-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.service-box h3{
+    font-size:18px;
+}
+
+.service-box p{
+    color:#9eacbd;
+    font-size:13px;
+    margin-top:8px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    text-align:center;
+
+    background:
+    linear-gradient(
+        rgba(0,10,20,.88),
+        rgba(0,10,20,.94)
+    ),
+    url("https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=2000&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.contact h2{
+    font-size:clamp(40px,6vw,75px);
+    margin-bottom:20px;
+}
+
+.contact p{
+    color:#ccc;
+    max-width:650px;
+    margin:0 auto 25px;
+    line-height:1.8;
+}
+
+.phone{
+    font-size:clamp(25px,4vw,40px);
+    color:#ff8a00;
+    font-weight:900;
+    margin-bottom:30px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:35px 8%;
+    background:#02050a;
+
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+
+    color:#77889b;
+    font-size:13px;
+}
+
+footer span{
+    color:#ff8a00;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    .navbar{
+        padding:17px 5%;
     }
 
-    body {
-      background: #f5f7fa;
-      color: #222;
+    .nav-links{
+        display:none;
     }
 
-    header {
-      background: linear-gradient(135deg, #0d47a1, #1976d2);
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
+    section{
+        padding:75px 5%;
     }
 
-    header h1 {
-      font-size: 38px;
-      margin-bottom: 12px;
+    .hero{
+        padding:120px 5% 70px;
     }
 
-    header p {
-      font-size: 19px;
+    .hero h1{
+        font-size:52px;
     }
 
-    .call-btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 28px;
-      background: #25d366;
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-size: 18px;
-      font-weight: bold;
+    .cards{
+        grid-template-columns:1fr;
     }
 
-    section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 45px 20px;
+    .showcase-grid{
+        grid-template-columns:1fr;
     }
 
-    .title {
-      text-align: center;
-      font-size: 30px;
-      margin-bottom: 30px;
-      color: #0d47a1;
+    .service-boxes{
+        grid-template-columns:1fr 1fr;
     }
 
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+    .showcase-item{
+        min-height:380px;
+    }
+}
+
+@media(max-width:450px){
+
+    .hero h1{
+        font-size:42px;
     }
 
-    .service {
-      background: white;
-      padding: 25px 15px;
-      text-align: center;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: 0.3s;
+    .hero p{
+        font-size:15px;
     }
 
-    .service:hover {
-      transform: translateY(-5px);
+    .service-boxes{
+        grid-template-columns:1fr;
     }
 
-    .service .icon {
-      font-size: 45px;
-      margin-bottom: 12px;
+    .buttons{
+        flex-direction:column;
     }
 
-    .service h3 {
-      color: #1976d2;
-      margin-bottom: 8px;
+    .btn{
+        text-align:center;
+        width:100%;
     }
 
-    .features {
-      background: #0d47a1;
-      color: white;
-      text-align: center;
+    footer{
+        text-align:center;
+        justify-content:center;
     }
-
-    .feature-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-    }
-
-    .feature {
-      padding: 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .contact {
-      text-align: center;
-    }
-
-    .phone {
-      font-size: 28px;
-      color: #0d47a1;
-      font-weight: bold;
-      margin: 15px 0;
-    }
-
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>A.K Home Appliance Service Centre</h1>
-    <p>Professional Home Appliance Repair & Service</p>
+<!-- NAVBAR -->
 
-    <a class="call-btn" href="tel:+916206149916">
-      📞 Call Now: +91 62061 49916
-    </a>
-  </header>
+<nav class="navbar">
 
-  <section>
-    <h2 class="title">Our Services</h2>
+    <div class="logo">
+        A.K <span>HOME APPLIANCE</span>
+    </div>
 
-    <div class="services">
+    <ul class="nav-links">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#services">SERVICES</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+    </ul>
 
-      <div class="service">
-        <div class="icon">📺</div>
-        <h3>TV</h3>
-        <p>TV Repair & Installation</p>
-      </div>
+</nav>
 
-      <div class="service">
-        <div class="icon">❄️</div>
-        <h3>AC</h3>
-        <p>AC Repair, Service & Installation</p>
-      </div>
 
-      <div class="service">
-        <div class="icon">🧊</div>
-        <h3>Refrigerator</h3>
-        <p>Refrigerator Repair & Service</p>
-      </div>
+<!-- HERO -->
 
-      <div class="service">
-        <div class="icon">🚿</div>
-        <h3>Geyser</h3>
-        <p>Geyser Repair & Installation</p>
-      </div>
+<section class="hero" id="home">
 
-      <div class="service">
-        <div class="icon">🧺</div>
-        <h3>Washing Machine</h3>
-        <p>All Types of Washing Machine Repair</p>
-      </div>
+    <div class="hero-content">
 
-      <div class="service">
-        <div class="icon">🍽️</div>
-        <h3>Microwave</h3>
-        <p>Microwave Repair & Service</p>
-      </div>
+        <div class="small-title">
+            Professional • Reliable • Trusted
+        </div>
 
-      <div class="service">
-        <div class="icon">🔧</div>
-        <h3>Other Appliances</h3>
-        <p>Repair & Maintenance of Home Appliances</p>
-      </div>
+        <h1>
+            A.K HOME<br>
+            <span>APPLIANCE SERVICE CENTRE</span>
+        </h1>
+
+        <p>
+            Professional home appliance repair, installation and
+            maintenance service. We provide reliable service for
+            TV, AC, refrigerator, geyser, washing machine,
+            microwave and other home appliances.
+        </p>
+
+        <div class="buttons">
+
+            <a href="tel:+916206149916" class="btn primary">
+                📞 Call Now
+            </a>
+
+            <a href="#services" class="btn secondary">
+                Our Services
+            </a>
+
+        </div>
 
     </div>
-  </section>
 
-  <section class="features">
-    <h2 class="title" style="color:white;">Why Choose A.K?</h2>
+</section>
 
-    <div class="feature-list">
-      <div class="feature">🔧 Expert Repair Service</div>
-      <div class="feature">🏠 Home Service</div>
-      <div class="feature">⚙️ Genuine Parts</div>
-      <div class="feature">📋 AMC Available</div>
-      <div class="feature">🛠️ Professional Installation</div>
-      <div class="feature">✅ Reliable Service</div>
+
+<!-- SERVICES -->
+
+<section class="features" id="services">
+
+    <div class="section-label">
+        Our Services
     </div>
-  </section>
 
-  <section class="contact">
-    <h2 class="title">Contact Us</h2>
+    <h2 class="section-title">
+        Complete Appliance Care.
+    </h2>
 
-    <p>For Repair, Installation & AMC Services</p>
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">📺</div>
+            <h3>TV Repair</h3>
+            <p>
+                Professional TV repair and installation
+                service for different types of televisions.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">❄️</div>
+            <h3>AC Service</h3>
+            <p>
+                AC repair, servicing, installation and
+                maintenance by experienced technicians.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧊</div>
+            <h3>Refrigerator</h3>
+            <p>
+                Reliable refrigerator repair and maintenance
+                service for home appliances.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🚿</div>
+            <h3>Geyser</h3>
+            <p>
+                Geyser repair, installation and maintenance
+                service.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🧺</div>
+            <h3>Washing Machine</h3>
+            <p>
+                Washing machine repair and maintenance for
+                different models and brands.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🍽️</div>
+            <h3>Microwave</h3>
+            <p>
+                Microwave repair and appliance service
+                by professional technicians.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SHOWCASE -->
+
+<section class="showcase" id="about">
+
+    <div class="section-label">
+        A.K Service Centre
+    </div>
+
+    <h2 class="section-title">
+        Your Home. Our Service.
+    </h2>
+
+    <div class="showcase-grid">
+
+        <div class="showcase-item item1">
+
+            <div class="showcase-text">
+
+                <h3>Professional Repair</h3>
+
+                <p>
+                    Reliable repair service for your essential
+                    home appliances.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="showcase-item item2">
+
+            <div class="showcase-text">
+
+                <h3>Expert Installation</h3>
+
+                <p>
+                    Professional installation with attention
+                    to safety and quality.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICE TYPES -->
+
+<section class="service-list">
+
+    <div class="section-label">
+        What We Offer
+    </div>
+
+    <h2 class="section-title">
+        One Centre. Complete Solution.
+    </h2>
+
+    <div class="service-boxes">
+
+        <div class="service-box">
+            <div class="big-icon">🔧</div>
+            <h3>Repair Service</h3>
+            <p>Professional appliance repair</p>
+        </div>
+
+        <div class="service-box">
+            <div class="big-icon">⚙️</div>
+            <h3>Installation</h3>
+            <p>Safe and professional installation</p>
+        </div>
+
+        <div class="service-box">
+            <div class="big-icon">📋</div>
+            <h3>AMC</h3>
+            <p>Annual maintenance service</p>
+        </div>
+
+        <div class="service-box">
+            <div class="big-icon">✅</div>
+            <h3>Genuine Parts</h3>
+            <p>Quality replacement parts</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="section-label">
+        Contact A.K
+    </div>
+
+    <h2>
+        Need Appliance<br>
+        Service?
+    </h2>
+
+    <p>
+        Contact A.K Home Appliance Service Centre for
+        repair, installation, AMC and genuine parts.
+    </p>
 
     <div class="phone">
-      📞 +91 62061 49916
+        +91 62061 49916
     </div>
 
-    <a class="call-btn" href="tel:+916206149916">
-      Call for Service
-    </a>
-  </section>
+    <div class="buttons">
 
-  <footer>
-    © 2026 A.K Home Appliance Service Centre
-    <br>
-    TV • AC • Refrigerator • Geyser • Washing Machine • Microwave
-  </footer>
+        <a href="tel:+916206149916" class="btn primary">
+            📞 Call Now
+        </a>
+
+        <a href="#home" class="btn secondary">
+            Back to Home
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        © 2026 <span>A.K HOME APPLIANCE SERVICE CENTRE</span>
+    </div>
+
+    <div>
+        TV • AC • Refrigerator • Geyser • Washing Machine • Microwave
+    </div>
+
+</footer>
 
 </body>
 </html>
